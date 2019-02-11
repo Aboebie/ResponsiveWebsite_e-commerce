@@ -8,21 +8,21 @@
         <div class="col-md-9">
             <h5 class="proNameViewCart" runat="server" id="h5NoItems"></h5>
 
-            <asp:Repeater ID="rptrCartProducts" runat="server">
+            <asp:Repeater ID="rptrCartProducts" runat="server" OnItemCommand="btnRemoveItem_Click">
                 <ItemTemplate>
                     <div class="media" style="border: 1px solid #eaeaec;">
                         <div class="media-left">
                             <a href="ProductView.aspx?PID=<%#Eval("PID") %>" target="_blank">
-                                <img width="100px" class="media-object" src="Images/ProductImages/<%#Eval("PID") %>/<%#Eval("Name") %><%#Eval("Extention") %>" alt="<%#Eval("Name") %>" onerror="this.src='images/noimage.jpg'">
+                                <img width="100px" class="media-object" src="Images/ProductImages/<%#Eval("PID") %>/<%#Eval("Name") %><%#Eval("Extention") %>" alt="<%#Eval("Name") %>" onerror="this.src='images/noimage.jpg'"/>
                             </a>
-                        </div>
+                        &nbsp;</div>
                         <div class="media-body">
                             <h5 class="media-heading proNameViewCart"><%#Eval("PName") %></h5>
                             <p class="proPriceDiscountView">Size : <%#Eval("SizeNamee") %></p>
                             <span class="proPriceView"><%#Eval("PSelPrice","{0:c}") %></span>
                             <span class="proOgPriceView"><%#Eval("PPrice","{0:0,00}") %></span>
                             <p>
-                                <asp:Button CommandArgument='<%#Eval("PID")+"-"+ Eval("SizeIDD")%>' ID="btnRemoveItem" OnClick="btnRemoveItem_Click" CssClass="removeButton" runat="server" Text="REMOVE" />
+                                <asp:Button CommandArgument='<%#Eval("PID")+"-"+ Eval("SizeIDD")%>' ID="btnRemoveItem" OnClick="btnRemoveItem_Click" CssClass="removeButton" runat="server" Text="REMOVE"  />
                             </p>
                         </div>
                     </div>
