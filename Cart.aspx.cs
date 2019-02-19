@@ -94,7 +94,6 @@ public partial class Cart : System.Web.UI.Page
             CartProducts.Values["CartPID"] = null;
             CartProducts.Expires = DateTime.Now.AddDays(-1);
             Response.Cookies.Add(CartProducts);
-
         }
         else
         {
@@ -102,7 +101,6 @@ public partial class Cart : System.Web.UI.Page
             CartProducts.Values["CartPID"] = CookiePIDUpdated;
             CartProducts.Expires = DateTime.Now.AddDays(30);
             Response.Cookies.Add(CartProducts);
-
         }
         Response.Redirect("~/Cart.aspx");
 
@@ -110,6 +108,13 @@ public partial class Cart : System.Web.UI.Page
 
     protected void btnBuyNow_Click(object sender, EventArgs e)
     {
-
+        if (Session["USERNAME"] != null)
+        {
+            Response.Redirect("~/Payment.aspx");
+        }
+        else
+        {
+            Response.Redirect("~/SignIn.aspx?rurl=cart");
+        }
     }
 }
